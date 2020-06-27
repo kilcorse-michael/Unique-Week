@@ -1,5 +1,4 @@
 <?php
-
 //determines current day of the week
   function mak_getWeekday(){
     global $today;
@@ -36,13 +35,10 @@
 //add shortcode to insert on page
  function mak_Make_Plugin_Shortcode($atts, $Content=null) {
 	$day = mak_getWeekday();
-	$Content = "<style>\r\n";
-	$Content .= "h3.demoClass {\r\n";
-	$Content .= "color: #26b158;\r\n";
-	$Content .= "}\r\n";
-	$Content .= "</style>\r\n";
-	$Content .= "<center>";
+	$Content = "<center>";
+	$Content .= "<h1 style='color: green; size='20rem'>";
 	$Content .= $day;
+	$Content .= "</h1>";
 	$Content .= "</center>";
 
     return $Content;
