@@ -1,9 +1,4 @@
 <?php
-/*
- * Add my new menu to the Admin Control Panel
- */
-
-
 
 //determines current day of the week
   function mak_getWeekday(){
@@ -13,19 +8,19 @@
     $options = array(get_option( 'wpse61431_settings' ));
     switch($nDay){
       case 0:
-        $today = "<h3>Check it out!</h3>";
+        $today = $options[0]['wpse61431_sunday'];
         break;
       case 1:
-        $today = "<h3>Check it out!</h3>";
+        $today = $options[0]['wpse61431_monday'];
         break;
       case 2:
-        $today = "<h3>Check it out!</h3>";
+        $today = $options[0]['wpse61431_tuesday'];
         break;
       case 3:
-        $today = "<h3>Check it out!</h3>";
+        $today = $options[0]['wpse61431_wednesday'];
         break;
       case 4:
-        echo "<h3>Happy Thursday</h3>";
+        $today = $options[0]['wpse61431_thursday'];
         break;
       case 5:
         $today = $options[0]['wpse61431_friday'];
@@ -46,8 +41,10 @@
 	$Content .= "color: #26b158;\r\n";
 	$Content .= "}\r\n";
 	$Content .= "</style>\r\n";
+	$Content .= "<center>";
 	$Content .= $day;
-	 
+	$Content .= "</center>";
+
     return $Content;
 }
 
