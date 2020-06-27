@@ -4,7 +4,7 @@
  */
 add_action('admin_menu', 'wpse61431_admin_page');
 function wpse61431_admin_page(){
-    add_menu_page('wpse61431 Settings', 'wpse61431', 'administrator', 'wpse61431-settings', 'wpse61431_admin_page_callback');
+    add_menu_page('Unique Week Settings', 'Unique Week', 'administrator', 'wpse61431-settings', 'wpse61431_admin_page_callback');
 }
 
 /*

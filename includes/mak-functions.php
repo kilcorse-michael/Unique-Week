@@ -1,4 +1,10 @@
 <?php
+/*
+ * Add my new menu to the Admin Control Panel
+ */
+
+
+
 //determines current day of the week
   function mak_getWeekday(){
     global $today;
