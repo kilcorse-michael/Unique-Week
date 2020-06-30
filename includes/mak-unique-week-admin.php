@@ -29,85 +29,54 @@ function wpse61431_admin_page_callback(){ ?>
         do_settings_sections( __FILE__ );
 
         //get the older values, wont work the first time
-        $options = get_option( 'wpse61431_settings' ); ?>
+        $options = get_option( 'wpse61431_settings' );
+        $mak_sets = array("wpse61431_sunday",
+                          "wpse61431_monday",
+                          "wpse61431_tuesday",
+                          "wpse61431_wednesday",
+                          "wpse61431_thursday",
+                          "wpse61431_friday",
+                          "wpse61431_saturday") ?>
+
    <table class="form-table">
-       <tr>
-           <th scope="row">Sunday</th>
-           <td>
-               <fieldset>
-                   <label>
-                       <input name="wpse61431_settings[wpse61431_sunday]" type="text" id="wpse61431_sunday" value="<?php echo (isset($options['wpse61431_sunday']) && $options['wpse61431_sunday'] != '') ? $options['wpse61431_sunday'] : ''; ?>"/>
-                       <br />
-                   </label>
-               </fieldset>
-           </td>
-       </tr>
-       <tr>
-           <th scope="row">Monday</th>
-           <td>
-               <fieldset>
-                   <label>
-                       <input name="wpse61431_settings[wpse61431_monday]" type="text" id="wpse61431_monday" value="<?php echo (isset($options['wpse61431_monday']) && $options['wpse61431_monday'] != '') ? $options['wpse61431_monday'] : ''; ?>"/>
-                       <br />
-                   </label>
-               </fieldset>
-           </td>
-       </tr>
-       <tr>
-           <th scope="row">Tuesday</th>
-           <td>
-               <fieldset>
-                   <label>
-                       <input name="wpse61431_settings[wpse61431_tuesday]" type="text" id="wpse61431_tuesday" value="<?php echo (isset($options['wpse61431_tuesday']) && $options['wpse61431_tuesday'] != '') ? $options['wpse61431_tuesday'] : ''; ?>"/>
-                       <br />
-                   </label>
-               </fieldset>
-           </td>
-       </tr>
-       <tr>
-           <th scope="row">Wednesday</th>
-           <td>
-               <fieldset>
-                   <label>
-                       <input name="wpse61431_settings[wpse61431_wednesday]" type="text" id="wpse61431_wednesday" value="<?php echo (isset($options['wpse61431_wednesday']) && $options['wpse61431_wednesday'] != '') ? $options['wpse61431_wednesday'] : ''; ?>"/>
-                       <br />
-                   </label>
-               </fieldset>
-           </td>
-       </tr>
-       <tr>
-           <th scope="row">Thursday</th>
-           <td>
-               <fieldset>
-                   <label>
-                       <input name="wpse61431_settings[wpse61431_thursday]" type="text" id="wpse61431_thursday" value="<?php echo (isset($options['wpse61431_thursday']) && $options['wpse61431_thursday'] != '') ? $options['wpse61431_thursday'] : ''; ?>"/>
-                       <br />
-                   </label>
-               </fieldset>
-           </td>
-       </tr>
-       <tr>
-           <th scope="row">Friday</th>
-           <td>
-               <fieldset>
-                   <label>
-                       <input name="wpse61431_settings[wpse61431_friday]" type="text" id="wpse61431_friday" value="<?php echo (isset($options['wpse61431_friday']) && $options['wpse61431_friday'] != '') ? $options['wpse61431_friday'] : ''; ?>"/>
-                       <br />
-                   </label>
-               </fieldset>
-           </td>
-       </tr>
-       <tr>
-           <th scope="row">Saturday</th>
-           <td>
-               <fieldset>
-                   <label>
-                       <input name="wpse61431_settings[wpse61431_saturday]" type="text" id="wpse61431_saturday" value="<?php echo (isset($options['wpse61431_saturday']) && $options['wpse61431_saturday'] != '') ? $options['wpse61431_saturday'] : ''; ?>"/>
-                       <br />
-                   </label>
-               </fieldset>
-           </td>
-       </tr>
+       <?php
+          foreach($mak_sets as $key => $value){ ?>
+            <tr>
+              <th scope="row"><?php switch($key){
+                                      case 0:
+                                        echo "Sunday";
+                                        break;
+                                      case 1:
+                                        echo "Monday";
+                                        break;
+                                      case 2:
+                                        echo "Tuesday";
+                                        break;
+                                      case 3:
+                                        echo "Wednesday";
+                                        break;
+                                      case 4:
+                                        echo "Thursday";
+                                        break;
+                                      case 5:
+                                        echo "Friday";
+                                        break;
+                                      case 6:
+                                        echo "Saturday";
+                                        break;
+                                    }  ?>
+              <td>
+                <fieldset>
+                  <label>
+                    <input name="wpse61431_settings[<?php $value ?>]" type="text" id="<?php $value ?>" value="<?php echo (isset($options[$value]) && $options[$value] != '') ? $options[$value] : ''; ?>"/>
+                    <br />
+                </label>
+            </fieldset>
+        </td>
+    </tr>
+          <?php
+          }
+       ?>
    </table>
    <input type="submit" value="Save" />
 </form>
