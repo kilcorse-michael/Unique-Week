@@ -1,37 +1,31 @@
 <?php
-/*
- * Add my new menu to the Admin Control Panel
- */
-
-
-
 //determines current day of the week
   function mak_getWeekday(){
     global $today;
     $timestamp = current_time( 'timestamp' );
     $nDay = date('w', $timestamp);
-    $options = array(get_option( 'wpse61431_settings' ));
+    $options = array(get_option( 'mak_settings' ));
     switch($nDay){
       case 0:
-        $today = $options[0]['wpse61431_sunday'];
+        $today = $options[0]['mak_sunday'];
         break;
       case 1:
-        $today = $options[0]['wpse61431_monday'];
+        $today = $options[0]['mak_monday'];
         break;
       case 2:
-        $today = $options[0]['wpse61431_tuesday'];
+        $today = $options[0]['mak_tuesday'];
         break;
       case 3:
-        $today = $options[0]['wpse61431_wednesday'];
+        $today = $options[0]['mak_wednesday'];
         break;
       case 4:
-        $today = $options[0]['wpse61431_thursday'];
+        $today = $options[0]['mak_thursday'];
         break;
       case 5:
-        $today = $options[0]['wpse61431_friday'];
+        $today = $options[0]['mak_friday'];
         break;
       case 6:
-       	$today = $options[0]['wpse61431_saturday'];
+       	$today = $options[0]['mak_saturday'];
         break;
 
   }

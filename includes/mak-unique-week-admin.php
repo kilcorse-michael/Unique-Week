@@ -25,18 +25,18 @@ function wpse61431_admin_page_callback(){ ?>
     <div class="wrap">
     <h2>Unique Week Settings</h2>
     <form action="options.php" method="post"><?php
-        settings_fields( 'wpse61431_settings' );
+        settings_fields( 'mak_settings' );
         do_settings_sections( __FILE__ );
 
         //get the older values, wont work the first time
-        $options = get_option( 'wpse61431_settings' );
-$mak_sets = array("wpse61431_sunday",
-                  "wpse61431_monday",
-                  "wpse61431_tuesday",
-                  "wpse61431_wednesday",
-                  "wpse61431_thursday",
-                  "wpse61431_friday",
-                  "wpse61431_saturday") ?>
+        $options = get_option( 'mak_settings' );
+$mak_sets = array("mak_sunday",
+                  "mak_monday",
+                  "mak_tuesday",
+                  "mak_wednesday",
+                  "mak_thursday",
+                  "mak_friday",
+                  "mak_saturday") ?>
 
    <table class="form-table">
        <?php
@@ -68,7 +68,7 @@ $mak_sets = array("wpse61431_sunday",
               <td>
                 <fieldset>
                   <label>
-                    <input name="wpse61431_settings[<?php echo $value ?>]" type="text" id="<?php echo $value ?>" value="<?php echo (isset($options[$value]) && $options[$value] != '') ? $options[$value] : ''; ?>"/>
+                    <input name="mak_settings[<?php echo $value ?>]" type="text" id="<?php echo $value ?>" value="<?php echo (isset($options[$value]) && $options[$value] != '') ? $options[$value] : ''; ?>"/>
                     <br />
                 </label>
             </fieldset>
