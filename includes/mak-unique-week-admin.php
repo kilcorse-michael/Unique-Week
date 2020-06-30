@@ -30,13 +30,13 @@ function wpse61431_admin_page_callback(){ ?>
 
         //get the older values, wont work the first time
         $options = get_option( 'wpse61431_settings' );
-        $mak_sets = array("wpse61431_sunday",
-                          "wpse61431_monday",
-                          "wpse61431_tuesday",
-                          "wpse61431_wednesday",
-                          "wpse61431_thursday",
-                          "wpse61431_friday",
-                          "wpse61431_saturday") ?>
+$mak_sets = array("wpse61431_sunday",
+                  "wpse61431_monday",
+                  "wpse61431_tuesday",
+                  "wpse61431_wednesday",
+                  "wpse61431_thursday",
+                  "wpse61431_friday",
+                  "wpse61431_saturday") ?>
 
    <table class="form-table">
        <?php
@@ -68,7 +68,7 @@ function wpse61431_admin_page_callback(){ ?>
               <td>
                 <fieldset>
                   <label>
-                    <input name="wpse61431_settings[<?php $value ?>]" type="text" id="<?php $value ?>" value="<?php echo (isset($options[$value]) && $options[$value] != '') ? $options[$value] : ''; ?>"/>
+                    <input name="wpse61431_settings[<?php echo $value ?>]" type="text" id="<?php echo $value ?>" value="<?php echo (isset($options[$value]) && $options[$value] != '') ? $options[$value] : ''; ?>"/>
                     <br />
                 </label>
             </fieldset>
