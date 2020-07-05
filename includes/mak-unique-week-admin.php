@@ -2,26 +2,38 @@
 /*
  * Add the admin page
  */
-add_action('admin_menu', 'wpse61431_admin_page');
-function wpse61431_admin_page(){
-    add_menu_page('Unique Week Settings', 'Unique Week', 'administrator', 'wpse61431-settings', 'wpse61431_admin_page_callback');
+add_action('admin_menu', 'mak_admin_page');
+function mak_admin_page(){
+    add_menu_page('Unique Week Settings', 'Unique Week', 'administrator', 'mak-settings', 'mak_admin_page_callback');
 }
 
 /*
  * Register the settings
  */
-add_action('admin_init', 'wpse61431_register_settings');
-function wpse61431_register_settings(){
-    //this will save the option in the wp_options table as 'wpse61431_settings'
+add_action('admin_init', 'mak_register_settings');
+function mak_register_settings(){
+    //this will save the option in the wp_options table as 'mak_settings'
     //the third parameter is a function that will validate your input values
-    register_setting('wpse61431_settings', 'wpse61431_settings', 'wpse61431_settings_validate');
+    register_setting('mak_settings', 'mak_settings', 'mak_settings_validate');
 }
 
-//Display the validation errors and update messages
+//sanitize the data before saving
+function mak_settings_validate($input){
 
+	// Initialize the new array that will hold the sanitize values
+  $new_input = array();
+	// Loop through the input and sanitize each of the values
+  foreach ( $input as $key => $val ) {
+    	$new_input[ $key ] = ( isset( $input[ $key ] ) ) ?
+      sanitize_text_field( $val ) :
+      		'';
+	}
+	return $new_input;
+
+}
 
 //The markup for your plugin settings page
-function wpse61431_admin_page_callback(){ ?>
+function mak_admin_page_callback(){ ?>
     <div class="wrap">
     <h2>Unique Week Settings</h2>
     <form action="options.php" method="post"><?php
@@ -30,13 +42,13 @@ function wpse61431_admin_page_callback(){ ?>
 
         //get the older values, wont work the first time
         $options = get_option( 'mak_settings' );
-$mak_sets = array("mak_sunday",
-                  "mak_monday",
-                  "mak_tuesday",
-                  "mak_wednesday",
-                  "mak_thursday",
-                  "mak_friday",
-                  "mak_saturday") ?>
+        $mak_sets = array("mak_sunday",
+                          "mak_monday",
+                          "mak_tuesday",
+                          "mak_wednesday",
+                          "mak_thursday",
+                          "mak_friday",
+                          "mak_saturday") ?>
 
    <table class="form-table">
        <?php
